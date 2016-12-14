@@ -69,7 +69,7 @@ public interface Drivable {
                 constructor.setAccessible(true);
                 Object truck = constructor.newInstance(new Car(), Engine.E);
                 truckClass.getMethod("drive", Engine.Vendor.Waypoint[].class)
-                        .invoke(truck, new Engine.Vendor.Waypoint[]{ new Engine.Vendor.Waypoint<Integer>() });
+                        .invoke(truck, new Engine.Vendor.Waypoint<Integer>());
             } catch (Throwable e) {
                 e.printStackTrace();
             }
