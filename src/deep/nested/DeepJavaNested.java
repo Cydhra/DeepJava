@@ -45,28 +45,17 @@ public class DeepJavaNested {
     
         try {
             // get the (obviously declared) default constructor for the inner class
-            Constructor<?> innerClassConstructor = innerClass.getConstructor();
+            Constructor<?> innerClassConstructor = innerClass.getDeclaredConstructor(DeepJavaNested.class);
             // set it accessible, just in case, I am missing something, that would hide it
             innerClassConstructor.setAccessible(true);
             
             // invoke the constructor and get an instance of InnerClass
-            Object instanceOfInnerClass = innerClassConstructor.newInstance();
+            Object instanceOfInnerClass = innerClassConstructor.newInstance(new DeepJavaNested());
             // invoke test method
             innerClass.getMethod("foo").invoke(instanceOfInnerClass);
         } catch (NoSuchMethodException e) {
             System.err.println("Reflection failed to find constructor: " + e.getMessage());
         } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
-    
-        try {
-            // invoke the default constructor using the evil way
-            Object innerClassObj = innerClass.newInstance();
-            // invoke test method
-            innerClass.getMethod("foo").invoke(innerClassObj);
-        } catch (InstantiationException e) {
-            System.err.println("Reflection failed to instance class: " + e.getMessage());
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
         }
     }
