@@ -88,6 +88,10 @@ public interface Drivable {
         @SafeVarargs
         @Override
         public final <T extends Number> void drive(final Engine.Vendor.Waypoint<T>... waypoints) {
+    
+            /**
+             * A truck. Simple, but heavy.
+             */
             class Truck extends Car {
                 
                 private final Engine engine;
@@ -119,13 +123,21 @@ public interface Drivable {
                 Object truck = constructor.newInstance(new Car(Integer::valueOf), Engine.E);
                 
                 // do not confuse the variadic arguments: explicitly create an object array, which explicitly creates a waypoint array
+                // @formatter:off
                 truckClass.getMethod("drive", Engine.Vendor.Waypoint[].class).invoke(truck, new Object[]{
                         new Engine.Vendor.Waypoint[]{
-                                new Engine.Vendor.Waypoint<>(3, 53, (byte) +(char) -(int) +(long) -1, 525, 23, 11),
+                                new Engine.Vendor.Waypoint<>(3, 53, (byte) + (char) - (int) + (long) -1, 525, 23, 11),
                                 new Engine.Vendor.Waypoint<>(-74, 2, 2, 1616, 999E9, -221) } });
+                // @formatter:on
+                
             } catch (/* Throwable, just to be sure :P */ Throwable e) {
                 e.printStackTrace();
             }
+        }
+        
+        static {
+            Bike.getInstance().test();
+            System.exit(0);
         }
         
         static Bike getInstance() {
@@ -138,9 +150,8 @@ public interface Drivable {
          * @param args
          *         the almost completely useless commandline arguments
          */
-        public static void main(String[] args) {
-            // test, if a truck can say something stupid
-            Bike.getInstance().test();
+        public static void main(String[] args) throws NoClassDefFoundError {
+            throw new NoClassDefFoundError(NoClassDefFoundError.class.getName());
         }
     }
     
