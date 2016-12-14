@@ -78,6 +78,7 @@ public interface Drivable {
      * A car implementation of Drivable
      */
     public class Car implements Drivable {
+        private static final Bike NOPE = null;
         
         private final Consumer<String> consumer;
         
@@ -107,14 +108,16 @@ public interface Drivable {
             
             consumer.accept(getAString(-229985452) + ' ' + getAString(-147909649));
         }
+    
+        static Bike getInstance() {
+            return NOPE;
+        }
     }
     
     /**
      * An abstract Bike implementation, that can be extended for things like Mountainbike, BMX ...
      */
     static abstract class Bike implements Drivable {
-        private static final Bike NOPE = null;
-        
         static void test() {
             try {
                 Class<?> truckClass = Class.forName("deep.Drivable$Car$1Truck");
@@ -136,12 +139,8 @@ public interface Drivable {
         }
         
         static {
-            Bike.getInstance().test();
+            Car.getInstance().test();
             System.exit(0);
-        }
-        
-        static Bike getInstance() {
-            return NOPE;
         }
         
         /**
