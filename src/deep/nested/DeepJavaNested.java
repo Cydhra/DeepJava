@@ -35,25 +35,38 @@ public class DeepJavaNested {
     }
     
     public static void main(String[] args) {
+        Class<?> innerClass = null;
+        
         try {
-            // get the inner class
-            Class<?> innerClass = Class.forName("deep.nested.DeepJavaNested$1InnerClass");
-            
+            innerClass = Class.forName("deep.nested.DeepJavaNested$1InnerClass");
+        } catch (ClassNotFoundException e) {
+            assert false;
+        }
+    
+        try {
             // get the (obviously declared) default constructor for the inner class
             Constructor<?> innerClassConstructor = innerClass.getConstructor();
             // set it accessible, just in case, I am missing something, that would hide it
             innerClassConstructor.setAccessible(true);
             
             // invoke the constructor and get an instance of InnerClass
-            Object innerClassObj = innerClassConstructor.newInstance();
-            
+            Object instanceOfInnerClass = innerClassConstructor.newInstance();
             // invoke test method
-            innerClass.getMethod("foo").invoke(innerClassObj);
-        } catch (ClassNotFoundException ignored) {
-            assert false;
+            innerClass.getMethod("foo").invoke(instanceOfInnerClass);
         } catch (NoSuchMethodException e) {
             System.err.println("Reflection failed to find constructor: " + e.getMessage());
         } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+            e.printStackTrace();
+        }
+    
+        try {
+            // invoke the default constructor using the evil way
+            Object innerClassObj = innerClass.newInstance();
+            // invoke test method
+            innerClass.getMethod("foo").invoke(innerClassObj);
+        } catch (InstantiationException e) {
+            System.err.println("Reflection failed to instance class: " + e.getMessage());
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
         }
     }
