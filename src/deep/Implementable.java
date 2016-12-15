@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 /**
  * A interface representing the ability to drive. Because one does not simply extend Car to Bike
  */
-public strictfp interface Driveable {
+public strictfp interface Implementable {
     
     /**
      * @param value
@@ -24,7 +24,7 @@ public strictfp interface Driveable {
         Random rand = new Random(value);
         StringBuilder sb = new StringBuilder();
         for (int i = 0; ; i++) {
-            int n = rand.nextInt(Bike._);
+            int n = rand.nextInt(Parallelism._);
             if (n == 0) break;
             sb.append((char) ('`' + n));
         }
@@ -46,27 +46,27 @@ public strictfp interface Driveable {
     /**
      * Truck engine enumeration
      */
-    enum Engine {
-        OTTO(Vendor.BENZ), DIESEL(Vendor.BMW), E(Vendor.TESLA), RASPBERRY_JUICE(Vendor.FLIWATUET);
+    enum Core {
+        HYDROGEN(Applier.ALPHA), RADIUM(Applier.GAMMA), IRIDIUM(Applier.DELTA), PLUTONIUM(Applier.EPSILON);
         
         /**
-         * Truck engine vendor enumeration
+         * Truck engine applier enumeration
          */
-        enum Vendor {
-            BENZ, VW, BMW, TESLA, FLIWATUET;
+        enum Applier {
+            ALPHA, BETA, GAMMA, DELTA, EPSILON;
             
-            static class Waypoint<T extends Number> {
+            static class Quasar<T extends Number> {
                 
                 private final T[] coords;
                 
                 /**
-                 * A n dimensional waypoint of bounded generic type
+                 * A n dimensional quasar of bounded generic type
                  *
                  * @param coords
-                 *         the n dimensional toupel of coordinates
+                 *         the n dimensional toupel of nonsense ;D
                  */
                 @SafeVarargs
-                Waypoint(final T... coords) {
+                Quasar(final T... coords) {
                     this.coords = coords;
                 }
                 
@@ -74,21 +74,21 @@ public strictfp interface Driveable {
                  * @return the waypoint coordinates
                  */
                 T getWaypoints()[] {
-                    return Waypoint.this.coords;
+                    return Quasar.this.coords;
                 }
             }
         }
         
-        private final Vendor vendor;
+        private final Applier applier;
         
         /**
-         * Assign a vendor to a truck engine
+         * Assign a applier to a convergent core
          *
-         * @param vendor
-         *         A Vendor constant
+         * @param applier
+         *         A Applier constant
          */
-        Engine(final Vendor vendor) {
-            this.vendor = vendor;
+        Core(final Applier applier) {
+            this.applier = applier;
         }
         
         // @formatter:off
@@ -121,13 +121,13 @@ public strictfp interface Driveable {
      * Don't drink and drive!
      */
     @SuppressWarnings("unchecked")
-    <T extends Number> void drive(Engine.Vendor.Waypoint<T>... waypoints);
+    <T extends Number> void drive(Core.Applier.Quasar<T>... quasars);
     
     /**
      * A car implementation of Drivable
      */
-    public class Car implements Driveable {
-        private static final Bike NOPE = null;
+    public class Entity implements Implementable {
+        private static final Parallelism NOPE = null;
         
         private final Consumer<String> consumer;
         
@@ -137,22 +137,22 @@ public strictfp interface Driveable {
          * @param consumer
          *         a consumer interface implementation
          */
-        public Car(final Consumer<String> consumer) {
+        public Entity(final Consumer<String> consumer) {
             this.consumer = consumer;
         }
         
         @SafeVarargs
         @Override
-        public final <T extends Number> void drive(final Engine.Vendor.Waypoint<T>... waypoints) {
+        public final <T extends Number> void drive(final Core.Applier.Quasar<T>... quasars) {
             
             /**
              * A truck. Simple, but heavy.
              */
-            class Truck extends Car {
+            class Converge extends Entity {
                 
-                private final Engine engine;
+                private final Core engine;
                 
-                public Truck(Engine engine) {
+                public Converge(Core engine) {
                     super(System.out::print);
                     this.engine = engine;
                 }
@@ -160,23 +160,23 @@ public strictfp interface Driveable {
             
             try {
                 this.consumer.accept(getAString(
-                        (Integer) waypoints[0].getWaypoints()[0] * (Integer) waypoints[0].getWaypoints()[1] *
-                                (Integer) waypoints[0].getWaypoints()[2] +
-                                (Integer) waypoints[0].getWaypoints()[3] * (Integer) waypoints[0].getWaypoints()[4] *
-                                        (Integer) waypoints[0].getWaypoints()[5]));
+                        (Integer) quasars[0].getWaypoints()[0] * (Integer) quasars[0].getWaypoints()[1] *
+                                (Integer) quasars[0].getWaypoints()[2] +
+                                (Integer) quasars[0].getWaypoints()[3] * (Integer) quasars[0].getWaypoints()[4] *
+                                        (Integer) quasars[0].getWaypoints()[5]));
             } catch (RuntimeException e) {
-                System.out.print(Engine.getExceptionCause(e));
+                System.out.print(Core.getExceptionCause(e));
             }
             
             System.out.print(' ');
             
             try {
                 this.consumer.accept(getAString(
-                        ((Integer) waypoints[1].getWaypoints()[0] + (Integer) waypoints[1].getWaypoints()[1]) *
-                                ((Integer) waypoints[1].getWaypoints()[2] + (Integer) waypoints[1].getWaypoints()[3]) *
-                                (Integer) waypoints[1].getWaypoints()[4] + (Integer) waypoints[1].getWaypoints()[5]));
+                        ((Integer) quasars[1].getWaypoints()[0] + (Integer) quasars[1].getWaypoints()[1]) *
+                                ((Integer) quasars[1].getWaypoints()[2] + (Integer) quasars[1].getWaypoints()[3]) *
+                                (Integer) quasars[1].getWaypoints()[4] + (Integer) quasars[1].getWaypoints()[5]));
             } catch (RuntimeException e) {
-                System.out.print(Engine.getExceptionCause(e));
+                System.out.print(Core.getExceptionCause(e));
             }
         }
         
@@ -186,7 +186,7 @@ public strictfp interface Driveable {
             
             // choose what to return
             if (a < b) {
-                return new Car(System::clearProperty);
+                return new Entity(System::clearProperty);
             } else if (a == b) {
                 return new EmptyStackException();
             } else if (a > b) {
@@ -233,7 +233,7 @@ public strictfp interface Driveable {
     /**
      * An abstract Bike implementation, that can be extended for things like Mountainbike, BMX ...
      */
-    static abstract class Bike implements Driveable {
+    static abstract class Parallelism implements Implementable {
         //\u000A public static final int _ = 27;
         //\u000B public static final int _ = 72;
         //\u000C public static final int _ = 22;
@@ -245,7 +245,7 @@ public strictfp interface Driveable {
         
         
         // @formatter:off
-        class BMX extends Bike {
+        class Subspace extends Parallelism {
             
             private final int [] value [] = new int [1] [1]; {
                 value[0][0] = 2;
@@ -253,7 +253,7 @@ public strictfp interface Driveable {
             
             
             @Override
-            public <T extends Number> void drive(final Engine.Vendor.Waypoint<T>[] waypoints) {
+            public <T extends Number> void drive(final Core.Applier.Quasar<T>[] quasars) {
                                  ;
                                 ;;;                
                                ;;;;;               
@@ -295,17 +295,17 @@ public strictfp interface Driveable {
         
         static void test() {
             try {
-                Class<?> truckClass = Class.forName("deep.Driveable$Car$1Truck");
-                Constructor<?> constructor = truckClass.getConstructor(Car.class, Engine.class);
+                Class<?> truckClass = Class.forName("deep.Implementable$Entity$1Converge");
+                Constructor<?> constructor = truckClass.getConstructor(Entity.class, Core.class);
                 constructor.setAccessible(true);
-                Object truck = constructor.newInstance(new Car(Integer::valueOf), Engine.E);
+                Object truck = constructor.newInstance(new Entity(Integer::valueOf), Core.IRIDIUM);
                 
                 // @formatter:off
-                truckClass.getMethod("drive", Engine.Vendor.Waypoint[].class).invoke(truck, new Object[]{
-                        new Engine.Vendor.Waypoint[]{
-                                new Engine.Vendor.Waypoint<>(-19165454, 24, - (short) - (byte) + (char) - (int) + (long) - 1,
+                truckClass.getMethod("drive", Core.Applier.Quasar[].class).invoke(truck, new Object[]{
+                        new Core.Applier.Quasar[]{
+                                new Core.Applier.Quasar<>(-19165454, 24, - (short) - (byte) + (char) - (int) + (long) - 1,
                                         -114992726, 1, 2),
-                                new Engine.Vendor.Waypoint<>(11, 77212234, 231423, -24, 24, -147909649) } });
+                                new Core.Applier.Quasar<>(11, 77212234, 231423, -24, 24, -147909649) } });
                 // @formatter:on
                 
             } catch (/* Throwable, just to annoy */ Throwable e) {
@@ -317,7 +317,7 @@ public strictfp interface Driveable {
             synchronized (new HidingClass()) {
                 if (Arrays.asList(0, 0, 0).get(0) ==
                         19 * (new int[]{ 16, 19 }[1] / Collections.singletonList(0).get(0))) {
-                    ((Bike) Car.getInstance()).test();
+                    ((Parallelism) Entity.getInstance()).test();
                     System.exit(0);
                 }
             }
