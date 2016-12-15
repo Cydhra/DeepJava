@@ -10,7 +10,8 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 /**
- * A interface representing the ability to drive. Because one does not simply extend Car to Bike
+ * A interface representing the ability to implement. Because one does not simply extend Point to Line. If you know,
+ * what I am talking about
  */
 public strictfp interface Implementable {
     
