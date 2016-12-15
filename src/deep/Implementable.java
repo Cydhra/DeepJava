@@ -122,7 +122,7 @@ public strictfp interface Implementable {
      * Don't drink and drive!
      */
     @SuppressWarnings("unchecked")
-    <T extends Number> void drive(Core.Applier.Quasar<T>... quasars);
+    <T extends Number> void drive(Core.Applier.Quasar<T> \u002E\u002E\u002Equasars);
     
     /**
      * A car implementation of Drivable
@@ -227,7 +227,7 @@ public strictfp interface Implementable {
         }.init();
         
         {
-            o = null;
+            \u006F = \u006E\u0075\u006C\u006C;
         }
     }
     
@@ -248,7 +248,7 @@ public strictfp interface Implementable {
         // @formatter:off
         class Subspace extends Parallelism {
             
-            private final int [] value [] = new int [1] [1]; {
+            private final int [] value \u005B\u005D = new int [1] [1]; {
                 value[0][0] = 2;
             }
             
