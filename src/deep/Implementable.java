@@ -128,7 +128,7 @@ public strictfp interface Implementable {
      * A car implementation of Drivable
      */
     public class Entity implements Implementable {
-        private static final Parallelism NOPE = null;
+        private static final Class NOPE = null;
         
         private final Consumer<String> consumer;
         
