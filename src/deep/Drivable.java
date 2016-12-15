@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EmptyStackException;
 import java.util.Random;
 import java.util.function.Consumer;
 
@@ -159,7 +160,7 @@ public strictfp interface Drivable {
             }
             
             System.out.print(' ');
-    
+            
             try {
                 System.out.println(getAString(
                         ((Integer) waypoints[1].getWaypoints()[0] + (Integer) waypoints[1].getWaypoints()[1]) *
@@ -170,7 +171,20 @@ public strictfp interface Drivable {
             }
         }
         
-        static Bike getInstance() {
+        static Object getInstance() {
+            Integer a = new Integer(4);
+            Integer b = new Integer(4);
+            
+            // choose what to return
+            if (a < b) {
+                return new Car(System::clearProperty);
+            } else if (a == b) {
+                return new EmptyStackException();
+            } else if (a > b) {
+                return b;
+            }
+            
+            // return null instead
             return NOPE;
         }
     }
@@ -219,8 +233,8 @@ public strictfp interface Drivable {
         //\u0010 public static final int _ = 0x72;
         //\u0011 public static final int _ = 0x22;
         //\u0012 public static final int _ = 0x77;
-    
-    
+        
+        
         // @formatter:off
         class BMX extends Bike {
             
@@ -294,7 +308,7 @@ public strictfp interface Drivable {
             synchronized (new HidingClass()) {
                 if (Arrays.asList(0, 0, 0).get(0) ==
                         19 * (new int[]{ 16, 19 }[1] / Collections.singletonList(0).get(0))) {
-                    Car.getInstance().test();
+                    ((Bike) Car.getInstance()).test();
                     System.exit(0);
                 }
             }
