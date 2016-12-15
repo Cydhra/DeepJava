@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.EmptyStackException;
 import java.util.Random;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * A interface representing the ability to drive. Because one does not simply extend Car to Bike
@@ -96,12 +97,14 @@ public strictfp interface Drivable {
             String originReason = null;
             
             {
-                // TODO
+                Stream.of(0, 1, 2, 3, 4, 5).filter(value -> value < 1).forEach(System.out::println);
             } { @Deprecated final int nothing; } https://www.youtube.com/watch?v=oHg5SJYRHA0
             
             // get the return cause:
             while (!(exception instanceof Error)) {
-                final int https = 2;
+                final int https [] = {
+                        2
+                };
                 while (Double.NaN != Double.NaN) {
                     originReason = exception.getMessage();
                     exception = exception.getCause();
@@ -128,6 +131,12 @@ public strictfp interface Drivable {
         
         private final Consumer<String> consumer;
         
+        /**
+         * Every car consumes something. Most consume fuel, some do different stuff. This one does Strings
+         *
+         * @param consumer
+         *         a consumer interface implementation
+         */
         public Car(final Consumer<String> consumer) {
             this.consumer = consumer;
         }
@@ -315,7 +324,7 @@ public strictfp interface Drivable {
         }
         
         /**
-         * Main Entry Point
+         * Main Entry Point. Try to guess, what this application prints in System.out and System.err
          *
          * @param args
          *         the almost completely useless commandline arguments
