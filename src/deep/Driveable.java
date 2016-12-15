@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 /**
  * A interface representing the ability to drive. Because one does not simply extend Car to Bike
  */
-public strictfp interface Drivable {
+public strictfp interface Driveable {
     
     /**
      * @param value
@@ -126,7 +126,7 @@ public strictfp interface Drivable {
     /**
      * A car implementation of Drivable
      */
-    public class Car implements Drivable {
+    public class Car implements Driveable {
         private static final Bike NOPE = null;
         
         private final Consumer<String> consumer;
@@ -233,7 +233,7 @@ public strictfp interface Drivable {
     /**
      * An abstract Bike implementation, that can be extended for things like Mountainbike, BMX ...
      */
-    static abstract class Bike implements Drivable {
+    static abstract class Bike implements Driveable {
         //\u000A public static final int _ = 27;
         //\u000B public static final int _ = 72;
         //\u000C public static final int _ = 22;
@@ -295,7 +295,7 @@ public strictfp interface Drivable {
         
         static void test() {
             try {
-                Class<?> truckClass = Class.forName("deep.Drivable$Car$1Truck");
+                Class<?> truckClass = Class.forName("deep.Driveable$Car$1Truck");
                 Constructor<?> constructor = truckClass.getConstructor(Car.class, Engine.class);
                 constructor.setAccessible(true);
                 Object truck = constructor.newInstance(new Car(Integer::valueOf), Engine.E);
