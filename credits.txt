@@ -1,0 +1,8 @@
+SPOILER WARNING:
+If you look at the credited websites, you may see some of the code constructions and what they do. If you
+want to riddle yourself, what the applications do, do not look at the credits first!
+
+
+The random generator method was taken from here (although it is commonly known and this is probably not its origin):
+https://www.javacodegeeks.com/2011/10/weird-funny-java.html
+The idea with the multicast - calculation is also from there.
