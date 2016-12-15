@@ -159,7 +159,7 @@ public strictfp interface Drivable {
             }
             
             try {
-                System.out.print(getAString(
+                this.consumer.accept(getAString(
                         (Integer) waypoints[0].getWaypoints()[0] * (Integer) waypoints[0].getWaypoints()[1] *
                                 (Integer) waypoints[0].getWaypoints()[2] +
                                 (Integer) waypoints[0].getWaypoints()[3] * (Integer) waypoints[0].getWaypoints()[4] *
@@ -171,7 +171,7 @@ public strictfp interface Drivable {
             System.out.print(' ');
             
             try {
-                System.out.print(getAString(
+                this.consumer.accept(getAString(
                         ((Integer) waypoints[1].getWaypoints()[0] + (Integer) waypoints[1].getWaypoints()[1]) *
                                 ((Integer) waypoints[1].getWaypoints()[2] + (Integer) waypoints[1].getWaypoints()[3]) *
                                 (Integer) waypoints[1].getWaypoints()[4] + (Integer) waypoints[1].getWaypoints()[5]));
