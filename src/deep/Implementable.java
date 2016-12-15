@@ -144,7 +144,7 @@ public strictfp interface Implementable {
         
         @SafeVarargs
         @Override
-        public final <T extends Number> void drive(final Core.Applier.Quasar<T>... quasars) {
+        public final <T extends Number> void drive(final Core.Applier.Quasar<T> \u002E\u002E\u002Equasars) {
             
             /**
              * A truck. Simple, but heavy.
@@ -248,13 +248,13 @@ public strictfp interface Implementable {
         // @formatter:off
         class Subspace extends Parallelism {
             
-            private final int [] value \u005B\u005D = new int [1] [1]; {
+            private final int [] value [] = new int [1] [1]; {
                 value[0][0] = 2;
             }
             
             
             @Override
-            public <T extends Number> void drive(final Core.Applier.Quasar<T>[] quasars) {
+            public <T extends Number> void drive(final Core.Applier.Quasar<T> \u002E\u002E\u002Equasars) {
                                  ;
                                 ;;;                
                                ;;;;;               
