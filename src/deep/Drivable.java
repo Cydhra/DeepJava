@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 /**
  * A interface representing the ability to drive. Because one does not simply extend Car to Bike
  */
-public interface Drivable {
+public strictfp interface Drivable {
     
     /**
      * @param value
@@ -22,7 +22,7 @@ public interface Drivable {
         Random rand = new Random(value);
         StringBuilder sb = new StringBuilder();
         for (int i = 0; ; i++) {
-            int n = rand.nextInt(27);
+            int n = rand.nextInt(Bike._);
             if (n == 0) break;
             sb.append((char) ('`' + n));
         }
@@ -211,6 +211,16 @@ public interface Drivable {
      * An abstract Bike implementation, that can be extended for things like Mountainbike, BMX ...
      */
     static abstract class Bike implements Drivable {
+        //\u000A public static final int _ = 27;
+        //\u000B public static final int _ = 72;
+        //\u000C public static final int _ = 22;
+        //\u000E public static final int _ = 77;
+        //\u000F public static final int _ = 0x27;
+        //\u0010 public static final int _ = 0x72;
+        //\u0011 public static final int _ = 0x22;
+        //\u0012 public static final int _ = 0x77;
+    
+    
         // @formatter:off
         class BMX extends Bike {
             
