@@ -7,7 +7,7 @@ weird or just obfuscated Java constructions and started to add them together.
 
 This project contains multiple runnable Java applications. One package always contains one application.
 
-Regarding the class file ```Drivable.java```: Try to guess the terminal output on System.out and System.err each. (To be fair:
+Regarding the class file ```Implementable.java```: Try to guess the terminal output on System.out and System.err each. (To be fair:
 it is impossible, if you do not already know one specific method, I used in the example, but all other code snippets in the
 file just follow weird Java specifications and behaviour)
 
